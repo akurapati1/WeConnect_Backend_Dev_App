@@ -49,6 +49,11 @@ docker compose up -d                         # from the repository root
 DB_PASSWORD=postgres SPRING_PROFILES_ACTIVE=postgres ./mvnw spring-boot:run
 ```
 
+### Deploy for free
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/akurapati1/WeConnect_Backend_Dev_App)
+
+`render.yaml` + `user-service/Dockerfile` deploy the service on Render's **free** plan (sign in with GitHub, no card). Out of the box it uses in-memory H2, so data resets whenever the instance restarts or sleeps. For persistence create a free Postgres at [Neon](https://neon.tech) or [Supabase](https://supabase.com) and set `SPRING_PROFILES_ACTIVE=postgres`, `DB_URL` (`jdbc:postgresql://HOST/DB?sslmode=require`), `DB_USERNAME`, `DB_PASSWORD`. Check `/actuator/health` and `/swagger-ui.html` once live.
+
 ### Example
 ```bash
 curl -s -X POST localhost:8080/api/v1/users -H 'Content-Type: application/json' \
