@@ -1,0 +1,12 @@
+# Render Blueprint - free tier. Deploy: https://render.com/deploy?repo=https://github.com/akurapati1/WeConnect_Backend_Dev_App
+services:
+  - type: web
+    name: weconnect-user-service
+    runtime: docker
+    plan: free
+    rootDir: user-service
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /actuator/health
+    # No env vars needed: defaults to in-memory H2 (data resets on restart).
+    # For persistence add a free Neon/Supabase Postgres and set in the dashboard:
+    #   SPRING_PROFILES_ACTIVE=postgres, DB_URL=jdbc:postgresql://<host>/<db>?sslmode=require, DB_USERNAME, DB_PASSWORD
